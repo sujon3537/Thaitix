@@ -24,7 +24,7 @@ header {
 
 /* Banner */
 .banner {
-  background: url("/images/page-title.jpg");
+  background: url("../images/page-title.jpg");
   text-align: center;
   padding: 60px 0;
   position: relative;
