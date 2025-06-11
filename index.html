@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thatix - Cooking Recipe</title>
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/script.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <img src="./images/logo.png" alt="logo" class="logo" />
+    </header>
+    <div class="banner">
+      <div class="overlay"></div>
+      <h1>Search your<br />favorite recipe</h1>
+      <p>
+        A handful of simple ingredients typify the fresh, vibrant<br />flavors
+        of Greek cooking
+      </p>
+    </div>
+    <form class="search">
+      <input type="search" placeholder="Search..." />
+      <button class="search-btn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+    <div class="latest-recipes">
+      <h2>Latest Recipes</h2>
+      <div class="recipes-container">
+        <div class="loader">
+          <img src="./images/loading.gif" alt="Loading..." />
+        </div>
+        <!-- <div class="recipe-card">
+          <div class="card-img">
+            <img src="./images/rec1.jpg" alt="rec-card1" />
+          </div>
+          <div class="recipe-content">
+            <h3>Migas</h3>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente
+              minima dolorums.
+            </p>
+            <button>View details</button>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <footer>
+      <div class="footer-container">
+        <p>Copyright &copy; 2023 - All rights reserved</p>
+        <div class="social">
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
