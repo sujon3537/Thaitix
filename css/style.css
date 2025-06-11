@@ -180,6 +180,9 @@ footer {
   color: white;
 }
 @media screen and (max-width: 576px) {
+  .recipes-container {
+    justify-content: space-evenly;
+  }
   .footer-container {
     flex-direction: column;
     align-items: center;
