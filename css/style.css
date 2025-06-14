@@ -131,6 +131,11 @@ header {
 .recipe-content h3 {
   font-size: 20px;
   color: #333;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .recipe-content p {
   color: #333;

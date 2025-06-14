@@ -17,7 +17,7 @@ async function getRecipes() {
             <p>
               ${recipe.strInstructions}
             </p>
-            <button class="detail-btn" data-meal-id=${recipe.idMeal} onclick="my_modal_1.showModal()">View details ${recipe.idMeal}</button>
+            <button class="detail-btn" data-meal-id=${recipe.idMeal} onclick="my_modal_1.showModal()">View details</button>
           </div>
         </div>`
       )
@@ -45,7 +45,7 @@ async function getDetails(recipeID) {
   const response = await fetch(url);
   const data = await response.json();
   const recipe = data.meals[0];
-  // console.log(recipe.strMeal, recipe.strInstructions, recipe.strMealThumb);
+
   document.querySelector(".modal").innerHTML = `<div class="modal-box">
         <div class="img-container"><img src=${recipe.strMealThumb} alt=${recipe.strMeal} /></div>
         <h3 class="text-lg font-bold">${recipe.strMeal}</h3>
@@ -58,4 +58,47 @@ async function getDetails(recipeID) {
           </form>
         </div>
       </div>`;
+}
+
+document.querySelector(".search-btn").addEventListener("click", search);
+
+function search(event) {
+  event.preventDefault();
+  const input = document.querySelector("input");
+  searchRecipes(input.value);
+}
+
+async function searchRecipes(foodName) {
+  const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${foodName}`;
+  let recipeContainer = document.querySelector(".recipes-container");
+  recipeContainer.innerHTML = `<div class="loader">
+          <img src="./images/loading.gif" alt="Loading..." />
+        </div>`;
+  const response = await fetch(url);
+  const data = await response.json();
+  const recipeArray = data.meals;
+
+  if (recipeArray == null) {
+    return (recipeContainer.innerHTML = `<div class="loader">
+          <h3>Not Fount! Try Another</h3>
+        </div>`);
+    console.log("no recipe");
+  }
+
+  recipeContainer.innerHTML = recipeArray
+    .map(
+      (recipe) => `<div class="recipe-card">
+          <div class="card-img">
+            <img src="${recipe.strMealThumb}" alt="rec-card1" />
+          </div>
+          <div class="recipe-content">
+            <h3>${recipe.strMeal}</h3>
+            <p>
+              ${recipe.strInstructions}
+            </p>
+            <button class="detail-btn" data-meal-id=${recipe.idMeal} onclick="my_modal_1.showModal()">View details ${recipe.idMeal}</button>
+          </div>
+        </div>`
+    )
+    .join(" ");
 }
