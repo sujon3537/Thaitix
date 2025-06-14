@@ -40,7 +40,9 @@ getRecipes().then((buttons) => {
 
 async function getDetails(recipeID) {
   const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeID}`;
-  document.querySelector(".modal").innerHTML = "";
+  document.querySelector(".modal").innerHTML = `<div class="loader">
+          <img src="./images/loading.gif" alt="Loading..." />
+        </div>`;
 
   const response = await fetch(url);
   const data = await response.json();
