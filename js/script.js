@@ -38,21 +38,24 @@ getRecipes().then((buttons) => {
   });
 });
 
-// async function getDetails(recipeID) {
-//   const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeID}`;
-//   document.querySelector(".modal").innerHTML = "";
+async function getDetails(recipeID) {
+  const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeID}`;
+  document.querySelector(".modal").innerHTML = "";
 
-//   const response = await fetch(url);
-//   const data = await response.json();
-//   const recipe = data.meals[0];
-//   // console.log(recipe.strMeal, recipe.strInstructions, recipe.strMealThumb);
-//   document.querySelector(".modal").innerHTML = `<div class="modal-box">
-//         <h3 class="text-lg font-bold">${recipe.strMeal}</h3>
-//         <p class="py-4">Press ESC key or click the button below to close</p>
-//         <div class="modal-action">
-//           <form method="dialog">
-//             <button class="btn" id="close-btn">Close</button>
-//           </form>
-//         </div>
-//       </div>`;
-// }
+  const response = await fetch(url);
+  const data = await response.json();
+  const recipe = data.meals[0];
+  // console.log(recipe.strMeal, recipe.strInstructions, recipe.strMealThumb);
+  document.querySelector(".modal").innerHTML = `<div class="modal-box">
+        <div class="img-container"><img src=${recipe.strMealThumb} alt=${recipe.strMeal} /></div>
+        <h3 class="text-lg font-bold">${recipe.strMeal}</h3>
+        <p class="py-4">
+          ${recipe.strInstructions}
+        </p>
+        <div class="modal-action">
+          <form method="dialog">
+            <button class="btn">Close</button>
+          </form>
+        </div>
+      </div>`;
+}
