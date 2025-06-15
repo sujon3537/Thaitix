@@ -67,15 +67,22 @@ document.querySelector(".search-btn").addEventListener("click", search);
 function search(event) {
   event.preventDefault();
   const input = document.querySelector("input");
-  searchRecipes(input.value);
+  searchRecipes(input.value).then((buttons) => {
+    buttons.forEach((button) => {
+      let id = button.getAttribute("data-meal-id");
+      button.addEventListener("click", () => getDetails(id));
+    });
+  });
 }
 
 async function searchRecipes(foodName) {
   const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${foodName}`;
   let recipeContainer = document.querySelector(".recipes-container");
+
   recipeContainer.innerHTML = `<div class="loader">
           <img src="./images/loading.gif" alt="Loading..." />
         </div>`;
+
   const response = await fetch(url);
   const data = await response.json();
   const recipeArray = data.meals;
@@ -84,7 +91,6 @@ async function searchRecipes(foodName) {
     return (recipeContainer.innerHTML = `<div class="loader">
           <h3>Not Fount! Try Another</h3>
         </div>`);
-    console.log("no recipe");
   }
 
   recipeContainer.innerHTML = recipeArray
@@ -103,4 +109,7 @@ async function searchRecipes(foodName) {
         </div>`
     )
     .join(" ");
+
+  const btnList = document.querySelectorAll(".detail-btn");
+  return btnList;
 }
